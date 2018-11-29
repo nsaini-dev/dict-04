@@ -14,8 +14,15 @@ class CreateMapDesentenceEnsentenceTable extends Migration
     public function up()
     {
         Schema::create('map_desentence_ensentence', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->unsignedInteger('de_sentence_id'); // [PK] FK
+            $table->unsignedInteger('en_sentence_id'); // [PK] FK
+        });
+
+        Schema::table('map_desentence_ensentence', function (Blueprint $table) {
+            $table->primary([ 'de_sentence_id', 'en_sentence_id'  ]);
+            
+            $table->foreign('de_sentence_id')->references('id')->on('de_sentences');
+            $table->foreign('en_sentence_id')->references('id')->on('en_sentences');
         });
     }
 

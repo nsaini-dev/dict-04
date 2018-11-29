@@ -14,8 +14,15 @@ class CreateMapEnsentenceEnwordTable extends Migration
     public function up()
     {
         Schema::create('map_ensentence_enword', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->unsignedInteger('en_sentence_id');  // [PK] FK
+            $table->unsignedInteger('en_word_id');      // [PK] FK
+        });
+
+        Schema::table('map_ensentence_enword', function (Blueprint $table) {
+            $table->primary([ 'en_sentence_id', 'en_word_id'  ]);
+            
+            $table->foreign('en_sentence_id')->references('id')->on('en_sentences');
+            $table->foreign('en_word_id')->references('id')->on('en_words');
         });
     }
 

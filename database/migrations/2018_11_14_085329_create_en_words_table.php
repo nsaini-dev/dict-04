@@ -15,6 +15,7 @@ class CreateEnWordsTable extends Migration
     {
         Schema::create('en_words', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('value', 80)->unique();
             $table->timestamps();
         });
     }

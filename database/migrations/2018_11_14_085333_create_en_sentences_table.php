@@ -15,6 +15,7 @@ class CreateEnSentencesTable extends Migration
     {
         Schema::create('en_sentences', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('value');
             $table->timestamps();
         });
     }

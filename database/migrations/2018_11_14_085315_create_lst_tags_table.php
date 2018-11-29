@@ -14,8 +14,9 @@ class CreateLstTagsTable extends Migration
     public function up()
     {
         Schema::create('lst_tags', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->smallIncrements('id');
+            $table->string('value', 30)->unique();
+            $table->boolean('active')->default(TRUE);
         });
     }
 

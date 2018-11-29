@@ -15,6 +15,7 @@ class CreateDeSentencesTable extends Migration
     {
         Schema::create('de_sentences', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('value');
             $table->timestamps();
         });
     }

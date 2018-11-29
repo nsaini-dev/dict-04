@@ -16,6 +16,7 @@ class CreateLstRevisionSetsTable extends Migration
         Schema::create('lst_revision_sets', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('value', 30)->unique();
+            $table->boolean('active')->default(TRUE);
         });
     }
 
